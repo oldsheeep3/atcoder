@@ -1,4 +1,4 @@
-qname = "./ICPC2023/C"
+qname = "./ICPC2023/C1"
 fin = open(qname,'r')
 fout = open(qname+"-ans","w")
 n = int(fin.readline())
