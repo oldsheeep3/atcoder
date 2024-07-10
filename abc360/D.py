@@ -20,4 +20,4 @@ if R[0] < L[0]:
                     break
                 elif l-r <= t:
                     ans += 1
-print(ans)
+print(ans)  
