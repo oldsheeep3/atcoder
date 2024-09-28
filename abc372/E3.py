@@ -1,19 +1,20 @@
-N, Q = map(int, input().split())
-# 辞書を使用して各リストを管理
+# import heapq
+
+N, Q = map(int,input().split())
 lists = {f"c{i}": [i] for i in range(N + 1)}
 
-for _ in range(Q):
-    x, y, z = map(int, input().split())
-    if x == 1 and f"c{y}" == f"c{z}":
-        # yとzのリストを結合し、重複を排除
-        lists[f"c{y}"] = sorted(lists[f"c{y}"] + lists[f"c{z}"], reverse=True)
-        # Lの更新を行う
-        for key in lists.keys():
-            if key == f"c{z}":
-                lists[f"c{z}"] = lists[f"c{y}"]
-    else:
-        # z-1が範囲内か確認
-        if z - 1 < len(lists[f"c{y}"]):
+for i in range(1, Q + 1):
+    x, y, z = map(int,input().split())
+    if x == 1 and y != z:
+        # リストをマージ
+        lists[f"c{y}"].extend(lists[f"c{z}"])
+        # マージ後にソート
+        lists[f"c{y}"].sort(reverse=True)
+        # c[z]を削除
+        del lists[f"c{z}"]
+    elif x == 2:
+        # z-1番目の要素を取得
+        if f"c{y}" in lists and z - 1 < len(lists[f"c{y}"]):
             print(lists[f"c{y}"][z - 1])
         else:
             print("-1")
