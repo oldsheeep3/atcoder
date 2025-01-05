@@ -19,14 +19,13 @@ def yes():
 def no():
     print('No')
 
-card = inl()
-ans = {}
-for i in card:
-    if i in ans:
-        ans[i] += 1
-    else:
-        ans[i] = 1
-if (max(ans.values()) + min(ans.values()) == 4) and len(ans) == 2:
-    yes()
-else:
-    no()
+N = in1()
+TV = inll(N)
+tb,vb = 0,0
+
+for i in range(N):
+    t,v=TV[i][0],TV[i][1]
+    vb=max(vb-(t-tb),0)+v
+    tb = t
+
+print(vb)

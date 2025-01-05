@@ -18,15 +18,3 @@ def yes():
     print('Yes')
 def no():
     print('No')
-
-card = inl()
-ans = {}
-for i in card:
-    if i in ans:
-        ans[i] += 1
-    else:
-        ans[i] = 1
-if (max(ans.values()) + min(ans.values()) == 4) and len(ans) == 2:
-    yes()
-else:
-    no()

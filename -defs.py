@@ -1,4 +1,4 @@
-## 二分探索
+## 二分探索 ==================================
 
 import bisect
 
@@ -10,7 +10,7 @@ bisect.bisect_right(A,val) # 適切な位置のインデックスを返す (同�
 bisect.insort_left(A,val) # 適切な位置にぶち込む (同じのがあるとき一番最初に入れる)
 bisect.insort_right(A,val) # 適切な位置にぶち込む (同じのがあるとき一番最後に入れる)
 
-## ダイクストラ
+## ダイクストラ =============================
 
 # V: 頂点数
 # g[v] = {(w, cost)}:
@@ -42,7 +42,7 @@ def dijkstra(graph, goal, start):
                 heappush(que, (dist[t], t))
     return dist
 
-## n進数
+## n進数 ==================================
 # n進数->10進数
 def base_10(num_n,n):
     num_10 = 0
@@ -60,3 +60,44 @@ def base_n(num_10,n):
         str_n += str(num_10%n)
         num_10 //= n
     return int(str_n[::-1])
+
+# [int,int, ... ] -> {int:[index],int:[index]...}=====================
+def intIndex(lst,len=False,dict=True):
+    index_dict = {}
+    index_len = {}
+    for index, value in enumerate(lst):
+        if value not in index_dict:
+            index_dict[value] = [index]
+        else:
+            index_dict[value].append(index)
+    if len and dict:
+        return(index_dict,[len(i) for i in index_dict])
+    if len:
+        return [len(i) for i in index_dict]
+    return index_dict
+
+# n番目のindexでソート ==================
+def sortby(lst,index):
+    return sorted(lst, key=lambda x:[index])
+
+# input =================================
+def in1(type=int):
+    if type == int:
+        return int(input())
+    return input()
+def ins(type=int):
+    if type == int:
+        return map(int,input().split())
+    return map(str,input().split())
+def inl(type=int):
+    if type==int:
+        return list(map(int,input().split()))
+    return list(map(str,input().split()))
+def inll(n,type=int):
+    if type==int:
+        return [list(map(int,input().split())) for _ in range(n)]
+    return [list(map(str,input().split())) for _ in range(n)]
+def yes():
+    print('Yes')
+def no():
+    print('No')
