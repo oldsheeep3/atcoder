@@ -18,3 +18,12 @@ def yes():
     print('Yes')
 def no():
     print('No')
+
+N = in1()
+A = inl()
+for i in range(N-2):
+    if A[i+1]/A[i] != A[i+2]/A[i+1]:
+        no()
+        break
+else:
+    yes()

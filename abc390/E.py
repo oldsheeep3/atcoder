@@ -18,3 +18,5 @@ def yes():
     print('Yes')
 def no():
     print('No')
+
+N,X = ins()

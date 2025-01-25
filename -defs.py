@@ -80,6 +80,10 @@ def intIndex(lst,len=False,dict=True):
 def sortby(lst,index):
     return sorted(lst, key=lambda x:[index])
 
+# lst1 が lst2 の部分集合か否か
+def listMatch(lst1,lst2):
+    return set(lst1).issubset(lst2)
+
 # input =================================
 def in1(type=int):
     if type == int:
