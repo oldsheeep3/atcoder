@@ -84,6 +84,22 @@ def sortby(lst,index):
 def listMatch(lst1,lst2):
     return set(lst1).issubset(lst2)
 
+# dfs 辺の重さのリストを返す
+# graph = {start_node:[(end_node, weight), ...], ...}
+def dfs(graph, node, end_node, visited=set(), weights=[], all_paths=[]):
+    visited.add(node)
+    if node == end_node:
+        all_paths.append(weights.copy())
+    else:
+        for neighbor, weight in graph[node]:
+            if neighbor not in visited:
+                weights.append(weight)
+                dfs(graph, neighbor, end_node, visited, weights, all_paths)
+                weights.pop()
+    visited.remove(node)
+    return all_paths # [[0, 0, 0, ...], ...]
+
+
 # input =================================
 def in1(type=int):
     if type == int:
