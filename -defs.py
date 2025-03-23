@@ -80,13 +80,13 @@ def intIndex(lst,len=False,dict=True):
 def sortby(lst,index):
     return sorted(lst, key=lambda x:[index])
 
-# lst1 が lst2 の部分集合か否か
+# lst1 が lst2 の部分集合か否か =========
 def listMatch(lst1,lst2):
     return set(lst1).issubset(lst2)
 
-# dfs 辺の重さのリストを返す
+# dfs 辺の重さのリストを返す =============
 # graph = {start_node:[(end_node, weight), ...], ...}
-def dfs(graph, node, end_node, visited=set(), weights=[], all_paths=[]):
+def dfs2(graph, node, end_node, visited=set(), weights=[], all_paths=[]):
     visited.add(node)
     if node == end_node:
         all_paths.append(weights.copy())
@@ -99,6 +99,35 @@ def dfs(graph, node, end_node, visited=set(), weights=[], all_paths=[]):
     visited.remove(node)
     return all_paths # [[0, 0, 0, ...], ...]
 
+# dfs
+# graph = {'A': ['B', 'C'],'B': ['D'],'C': ['D'],'D': []}
+def dfs(graph, node, visited=None):
+    if visited is None:
+        visited = set()
+    
+    visited.add(node)
+    print(node)  # 現在のノードを出力
+
+    for neighbor in graph.get(node, []):
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited)
+
+# bfs
+from collections import deque
+
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
+    visited.add(start)
+
+    while queue:
+        node = queue.popleft()
+        print(node)  # 現在のノードを出力
+
+        for neighbor in graph.get(node, []):
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
 
 # input =================================
 def in1(type=int):
